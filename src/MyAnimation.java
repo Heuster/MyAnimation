@@ -48,17 +48,18 @@ public class MyAnimation {
 			g.fillRect(0, 0, 700, 500);
 		//Back Tire
 			g.setColor ( Color.black ) ;
-	  		g.fillOval ( 70, 360, 70, 70 ) ;
+	  		g.fillOval ( 70, 360, 50, 50 ) ;
 	        g.setColor ( Color.white ) ;
-	  		g.fillOval ( 80, 370, 50, 50 ) ;
+	  		g.fillOval ( 80, 370, 30, 30 ) ;
 	  	//Front Tire
 	  		g.setColor ( Color.black ) ;
-	  		g.fillOval ( 300, 360, 70, 70 ) ;
+	  		g.fillOval ( 300, 360, 50, 50 ) ;
 	        g.setColor ( Color.white ) ;
-	  		g.fillOval ( 310, 370, 50, 50 ) ;
+	  		g.fillOval ( 310, 370, 30, 30 ) ;
 	    //Body
 	  		g.setColor (SKYBLUE);
-	  		g.fillRect(x, y, width, height);
+	  		g.fillRect(70, 100, 300, 80);
+	  		
 		}
 	}
 }
