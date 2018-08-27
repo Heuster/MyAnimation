@@ -1,5 +1,7 @@
-import java.awt.* ;
 import java.applet.Applet ;
+import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -11,7 +13,7 @@ public class MyAnimation {
 	private int oneX = 200; // Starting X coordinate
 	private int oneY = 200; // Starting Y coordinate
 	
-	Color SKYBLUE= new Color (135, 206, 235);
+	Color SKYBLUE = new Color (135, 206, 235);
 	
 	boolean up = false;
 	boolean down = true;
@@ -20,16 +22,13 @@ public class MyAnimation {
 
 	public static void main(String[] args) {
 		new MyAnimation().go();
-}
+	}
 
 	private void go() {
 		frame = new JFrame("Test");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 		drawPanel = new DrawPanel();
-
     	frame.getContentPane().add(BorderLayout.CENTER, drawPanel);
-
     	frame.setVisible(true);
     	frame.setResizable(false);
     	frame.setSize(700, 500);
@@ -46,19 +45,28 @@ public class MyAnimation {
         //Inside Color
 			g.setColor(Color.WHITE);
 			g.fillRect(0, 0, 700, 500);
-		//Back Tire
-			g.setColor ( Color.black ) ;
-	  		g.fillOval ( 70, 360, 50, 50 ) ;
-	        g.setColor ( Color.white ) ;
-	  		g.fillOval ( 80, 370, 30, 30 ) ;
+	  	//Body
+	  		g.setColor(Color.black);
+	  		g.drawRoundRect(50, 340, 321, 61, 30,20);
+	  		g.setColor(SKYBLUE);
+	  		g.fillRoundRect(50, 340, 320, 60, 30,20);
+	  		g.drawRoundRect(50, 340, 320, 60, 30,20);
+	  		
 	  	//Front Tire
-	  		g.setColor ( Color.black ) ;
-	  		g.fillOval ( 300, 360, 50, 50 ) ;
-	        g.setColor ( Color.white ) ;
-	  		g.fillOval ( 310, 370, 30, 30 ) ;
-	    //Body
-	  		g.setColor (SKYBLUE);
-	  		g.fillRect(70, 100, 300, 80);
+	  		g.setColor(Color.black ) ;
+	  		g.fillOval(300, 360, 50, 50 ) ;
+	        g.setColor(Color.white ) ;
+	  		g.fillOval(310, 370, 30, 30 ) ;
+	  	//Back Tire
+			g.setColor (Color.black ) ;
+	  		g.fillOval (70, 360, 50, 50 ) ;
+	        g.setColor (Color.white ) ;
+	  		g.fillOval (80, 370, 30, 30 ) ;
+	  	//Arc
+	  		g.setColor(Color.black);
+	  		g.drawArc(25, 25, 120, 120, 45, 270);
+
+	  		
 	  		
 		}
 	}
