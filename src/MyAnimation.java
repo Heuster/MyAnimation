@@ -11,8 +11,13 @@ public class MyAnimation {
 	JFrame frame;
 	DrawPanel drawPanel;
 
-	//private int oneX = 200; // Starting X coordinate
-	//private int oneY = 200; // Starting Y coordinate
+	private int sunX = 300; // Starting X coordinate
+	private int sunY = 190; // Starting Y coordinate
+	private int carX = 300; // Starting Car X
+	private int carY = 380;	// Starting Car Y
+	private int roadX = 0;
+	private int roadY = 540;
+	private int counter = 0; 
 	
 	Color Silver = new Color (192,192,192);
 	Color Road = new Color (105,105,105);
@@ -39,6 +44,7 @@ public class MyAnimation {
     	frame.setResizable(false);
     	frame.setSize(1000, 600);
     	frame.setLocation(375, 55);
+    	moveSun();
 }
 
 	class DrawPanel extends JPanel {
@@ -57,8 +63,8 @@ public class MyAnimation {
 			g.drawRect(0, 0, 1000, 400);
 		//Sun
 	  		g.setColor(Sun);
-	  		g.fillOval(300,190, 200, 200);
-	  		g.drawOval(300,190,200,200);
+	  		g.fillOval(sunX,sunY, 200, 200);
+	  		g.drawOval(sunX,sunY, 200,200);
 		//Ocean
 	  		g.setColor(Ocean);
 	  		g.fillRect(0, 340, 1000, 200);
@@ -72,46 +78,72 @@ public class MyAnimation {
 			//Pillars
 			g.setColor(Silver);
 	  		g.fillRect(10, 495, 10, 45);
-	  		g.fillRect(50, 495, 10, 45);
-	  		g.fillRect(100, 495, 10, 45);
-	  		g.fillRect(150, 495, 10, 45);
-	  		g.fillRect(200, 495, 10, 45);
-	  		g.fillRect(250, 495, 10, 45);
-	  		g.fillRect(300, 495, 10, 45);
-	  		g.fillRect(350, 495, 10, 45);
-	  		g.fillRect(400, 495, 10, 45);
-	  		g.fillRect(450, 495, 10, 45);
-	  		g.fillRect(500, 495, 10, 45);
-	  		g.fillRect(550, 495, 10, 45);
-	  		g.fillRect(600, 495, 10, 45);
-	  		g.fillRect(650, 495, 10, 45);
-	  		g.fillRect(700, 495, 10, 45);
-	  		g.fillRect(750, 495, 10, 45);
-	  		g.fillRect(800, 495, 10, 45);
-	  		g.fillRect(850, 495, 10, 45);
-	  		g.fillRect(900, 495, 10, 45);
-	  		g.fillRect(950, 495, 10, 45);
+	  		g.fillRect(60, 495, 10, 45);
+	  		g.fillRect(110, 495, 10, 45);
+	  		g.fillRect(160, 495, 10, 45);
+	  		g.fillRect(210, 495, 10, 45);
+	  		g.fillRect(260, 495, 10, 45);
+	  		g.fillRect(310, 495, 10, 45);
+	  		g.fillRect(360, 495, 10, 45);
+	  		g.fillRect(410, 495, 10, 45);
+	  		g.fillRect(460, 495, 10, 45);
+	  		g.fillRect(510, 495, 10, 45);
+	  		g.fillRect(560, 495, 10, 45);
+	  		g.fillRect(610, 495, 10, 45);
+	  		g.fillRect(660, 495, 10, 45);
+	  		g.fillRect(710, 495, 10, 45);
+	  		g.fillRect(760, 495, 10, 45);
+	  		g.fillRect(810, 495, 10, 45);
+	  		g.fillRect(860, 495, 10, 45);
+	  		g.fillRect(910, 495, 10, 45);
+	  		g.fillRect(960, 495, 10, 45);
 	  		//Main
 	  		g.setColor(Silver);
 	  		g.fillRect(0, 500, 1000, 20);
 	  		g.setColor(Color.black);
-	  		//Mid
 	  		g.drawRect(0, 500, 1000, 20);
+	  		//Mid
 	  		g.setColor(Color.gray);
 	  		g.drawRect(0,510,1000,1);
 	  	//Road
 	  		g.setColor(Road);
 	  		g.fillRect(0, 540,1000,35);
 	  		g.drawRect(0, 540,1000,35);
-	  	
+	  	//Clouds
+	  		//g.setColor(Color.black);
+	  		//g.drawOval(0, 0, 200, 30);
 	  	//Car
 	  		ImageIcon i = new ImageIcon("image/Subie.png");
 	  		image = i.getImage();	  		
-	  		g.drawImage(image, 300, 380, null);
+	  		g.drawImage(image, carX, carY, null);
 	  	
 		}
 	}
+	//make sun move 1-2 pixels per car x + 5
+	private void moveSun() {
+		while (true) {
+			if(sunX <= 0);{
+                right = true;
+                left = false;
+			}
+			if(roadX <= 100);{
+				right = false;
+				left = true;
+			}
+			if(right){
+                sunX++;
+            }
+			if(left) {
+				roadX--;
+			}
+			try{
+                Thread.sleep(10);//speed 
+            } catch (Exception exc){}
+            frame.repaint();
+		}
+	}
 }
+
 
 
 	

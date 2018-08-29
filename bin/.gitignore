@@ -1,1 +1,7 @@
 /bin/
+/.classpath
+/.gitignore
+/.project
+/MyAnimation$DrawPanel.class
+/MyAnimation.class
+/src/

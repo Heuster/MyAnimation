@@ -69,7 +69,7 @@ final public class Animate {
             checkBounds();
             moveLoc();
             try{
-                Thread.sleep(3);//speed 
+                Thread.sleep(10);//speed 
             } catch (Exception exc){}
             frame.repaint();
         }
