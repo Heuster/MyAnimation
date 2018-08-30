@@ -15,8 +15,10 @@ public class MyAnimation {
 	private int sunY = 190; // Starting Y coordinate
 	private int carX = 300; // Starting Car X
 	private int carY = 380;	// Starting Car Y
-	private int roadX = 0;
+	private int roadX = 500;
 	private int roadY = 540;
+	private int road2X = 0;
+	private int road2Y = 540;
 	private int counter = 0; 
 	
 	Color Silver = new Color (192,192,192);
@@ -45,6 +47,7 @@ public class MyAnimation {
     	frame.setSize(1000, 600);
     	frame.setLocation(375, 55);
     	moveSun();
+    	moveRoad();
 }
 
 	class DrawPanel extends JPanel {
@@ -105,10 +108,14 @@ public class MyAnimation {
 	  		//Mid
 	  		g.setColor(Color.gray);
 	  		g.drawRect(0,510,1000,1);
-	  	//Road
+	  	//Road1
+	  		g.setColor(Color.black);
+	  		g.fillRect(roadX, roadY,500,35);
+	  		g.drawRect(roadX, roadY,500,35);
+	  	//Road2
 	  		g.setColor(Road);
-	  		g.fillRect(0, 540,1000,35);
-	  		g.drawRect(0, 540,1000,35);
+	  		g.fillRect(road2X, road2Y,500,35);
+	  		g.drawRect(road2X, road2Y,500,35);
 	  	//Clouds
 	  		//g.setColor(Color.black);
 	  		//g.drawOval(0, 0, 200, 30);
@@ -122,22 +129,39 @@ public class MyAnimation {
 	//make sun move 1-2 pixels per car x + 5
 	private void moveSun() {
 		while (true) {
-			if(sunX <= 0);{
+			if(sunX >= 0);{
                 right = true;
                 left = false;
 			}
-			if(roadX <= 100);{
-				right = false;
-				left = true;
+			if (sunY >=0);{
+				up = true;
+				down = false;
 			}
 			if(right){
-                sunX++;
-            }
-			if(left) {
-				roadX--;
+				sunX++;
 			}
 			try{
-                Thread.sleep(10);//speed 
+                Thread.sleep(120);//speed 
+            } catch (Exception exc){}
+            frame.repaint();
+		}
+	}
+	private void moveRoad() {
+		while(true) {
+			if(roadX >= 0) {
+				right = false;
+				left = true;	
+			}
+			if(left){
+				roadX--;
+			}
+			if(roadX == 0){
+				counter++;
+				road2X = 500;
+				road2X--;
+			}
+			try{
+                Thread.sleep(50);//speed 
             } catch (Exception exc){}
             frame.repaint();
 		}
