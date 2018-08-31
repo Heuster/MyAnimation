@@ -47,7 +47,7 @@ public class MyAnimation{
     	frame.setResizable(false);
     	frame.setSize(1000, 600);
     	frame.setLocation(375, 55);
-    	moveLoc();
+    	move();
 }
 
 	class DrawPanel extends JPanel {
@@ -119,50 +119,49 @@ public class MyAnimation{
 	  		ImageIcon i = new ImageIcon("image/Subie.png");
 	  		image = i.getImage();	  		
 	  		g.drawImage(image, carX, carY, null);
+	  		if (c % 10 ==  0) {
+	  			
+	  		}
 	  	
 		}
 	}
 	//make sun move 1-2 pixels per car x + 5
-	private void moveLoc() {
+	private void move() {
 		while (true) {
 			if(sunX >= 0);{
                 right = true;
-                left = false;
 			}
-			if (sunY >=0);{
-				up = true;
-				down = false;
-			}
+			
 			if(right);{
 				sunX++;
 			}       
             if(sun2X >= 0);{
                 right = true;
-                left = false;
+                
 			}
-			if (sun2Y >=0);{
-				up = true;
-				down = false;
-			}
+			
 			if(right);{
 				sun2X++;
 			}
-			if(carX >= 0);{
-				right = true;
-				left = false;
-			}
-			if (right);{
-				carX++;		
-			}
 			try{
-				Thread.sleep(120);//speed 
+				moveCar();
+				Thread.sleep(100);//speed 
 				} catch (Exception exc) {}
 				frame.repaint();
 		}
 	}
+	private void moveCar() {
+		while (true) {
+			carX++;
+		try{
+			Thread.sleep(10);//speed 
+			} catch (Exception exc) {}
+			frame.repaint();
+		}
+	}
 }
 
-
+//PROJECT IS INCOMPLETE
 
 
 	
