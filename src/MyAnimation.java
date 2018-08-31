@@ -7,19 +7,20 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
-public class MyAnimation {
+public class MyAnimation{
 	JFrame frame;
 	DrawPanel drawPanel;
+	
 
 	private int sunX = 300; // Starting X coordinate
 	private int sunY = 190; // Starting Y coordinate
-	private int carX = 300; // Starting Car X
+	private int sun2X = 300; // Starting X coordinate
+	private int sun2Y = 350; // Starting Y coordinate
+	private int carX = 0; // Starting Car X
 	private int carY = 380;	// Starting Car Y
-	private int roadX = 500;
+	private int roadX = 0;
 	private int roadY = 540;
-	private int road2X = 0;
-	private int road2Y = 540;
-	private int counter = 0; 
+	private int c = 0; 
 	
 	Color Silver = new Color (192,192,192);
 	Color Road = new Color (105,105,105);
@@ -46,8 +47,7 @@ public class MyAnimation {
     	frame.setResizable(false);
     	frame.setSize(1000, 600);
     	frame.setLocation(375, 55);
-    	moveSun();
-    	moveRoad();
+    	moveLoc();
 }
 
 	class DrawPanel extends JPanel {
@@ -73,8 +73,8 @@ public class MyAnimation {
 	  		g.fillRect(0, 340, 1000, 200);
 	  		g.drawRect(0, 340, 1000, 200);
 	  		g.setColor(Sun);
-	  		g.fillOval(300, 350, 200, 40);
-	  		g.drawOval(300, 350, 200, 40);
+	  		g.fillOval(sun2X, sun2Y, 200, 40);
+	  		g.drawOval(sun2X, sun2Y, 200, 40);
 	  		//g.setColor(Color.black);
 	  		//g.drawOval(300, 320, 200, 50);
 		//Guard Rail
@@ -109,13 +109,9 @@ public class MyAnimation {
 	  		g.setColor(Color.gray);
 	  		g.drawRect(0,510,1000,1);
 	  	//Road1
-	  		g.setColor(Color.black);
-	  		g.fillRect(roadX, roadY,500,35);
-	  		g.drawRect(roadX, roadY,500,35);
-	  	//Road2
 	  		g.setColor(Road);
-	  		g.fillRect(road2X, road2Y,500,35);
-	  		g.drawRect(road2X, road2Y,500,35);
+	  		g.fillRect(roadX, roadY,1000,35);
+	  		g.drawRect(roadX, roadY,1000,35);
 	  	//Clouds
 	  		//g.setColor(Color.black);
 	  		//g.drawOval(0, 0, 200, 30);
@@ -127,7 +123,7 @@ public class MyAnimation {
 		}
 	}
 	//make sun move 1-2 pixels per car x + 5
-	private void moveSun() {
+	private void moveLoc() {
 		while (true) {
 			if(sunX >= 0);{
                 right = true;
@@ -137,36 +133,35 @@ public class MyAnimation {
 				up = true;
 				down = false;
 			}
-			if(right){
+			if(right);{
 				sunX++;
+			}       
+            if(sun2X >= 0);{
+                right = true;
+                left = false;
+			}
+			if (sun2Y >=0);{
+				up = true;
+				down = false;
+			}
+			if(right);{
+				sun2X++;
+			}
+			if(carX >= 0);{
+				right = true;
+				left = false;
+			}
+			if (right);{
+				carX++;		
 			}
 			try{
-                Thread.sleep(120);//speed 
-            } catch (Exception exc){}
-            frame.repaint();
-		}
-	}
-	private void moveRoad() {
-		while(true) {
-			if(roadX >= 0) {
-				right = false;
-				left = true;	
-			}
-			if(left){
-				roadX--;
-			}
-			if(roadX == 0){
-				counter++;
-				road2X = 500;
-				road2X--;
-			}
-			try{
-                Thread.sleep(50);//speed 
-            } catch (Exception exc){}
-            frame.repaint();
+				Thread.sleep(120);//speed 
+				} catch (Exception exc) {}
+				frame.repaint();
 		}
 	}
 }
+
 
 
 
