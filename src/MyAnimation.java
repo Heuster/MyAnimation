@@ -11,12 +11,13 @@ public class MyAnimation{
 	JFrame frame;
 	DrawPanel drawPanel;
 	
-
+	private int counter = 0;
+	private ImageIcon i = new ImageIcon("image/Subie.png");
 	private int sunX = 300; // Starting X coordinate
 	private int sunY = 190; // Starting Y coordinate
 	private int sun2X = 300; // Starting X coordinate
 	private int sun2Y = 350; // Starting Y coordinate
-	private int carX = 0; // Starting Car X
+	private int carX = 0 - i.getIconWidth(); // Starting Car X
 	private int carY = 380;	// Starting Car Y
 	private int roadX = 0;
 	private int roadY = 540;
@@ -116,46 +117,30 @@ public class MyAnimation{
 	  		//g.setColor(Color.black);
 	  		//g.drawOval(0, 0, 200, 30);
 	  	//Car
-	  		ImageIcon i = new ImageIcon("image/Subie.png");
+	  		
 	  		image = i.getImage();	  		
 	  		g.drawImage(image, carX, carY, null);
-	  		if (c % 10 ==  0) {
-	  			
-	  		}
-	  	
 		}
 	}
-	//make sun move 1-2 pixels per car x + 5
+	
+	//make sun move slower than car
 	private void move() {
 		while (true) {
-			if(sunX >= 0);{
-                right = true;
-			}
-			
-			if(right);{
+			counter++;
+			if (counter % 100 == 0) {
 				sunX++;
-			}       
-            if(sun2X >= 0);{
-                right = true;
-                
-			}
-			
-			if(right);{
 				sun2X++;
 			}
-			try{
-				moveCar();
-				Thread.sleep(100);//speed 
-				} catch (Exception exc) {}
-				frame.repaint();
-		}
-	}
-	private void moveCar() {
-		while (true) {
-			carX++;
-		try{
-			Thread.sleep(10);//speed 
-			} catch (Exception exc) {}
+			if (counter % 5 == 0) {
+				carX++;
+			}
+			if (carX > 1000) {
+				carX = 0-i.getIconWidth();
+			}
+			try {
+				Thread.sleep(1);//speed 
+			} 
+			catch (Exception exc) {}
 			frame.repaint();
 		}
 	}
