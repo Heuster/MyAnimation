@@ -19,9 +19,14 @@ public class MyAnimation{
 	private int sun2Y = 350; // Starting Y coordinate
 	private int carX = 0 - i.getIconWidth(); // Starting Car X
 	private int carY = 380;	// Starting Car Y
+	private int xpoints[] = {400, 485, 645, 500};
+    private int ypoints[] = {400, 20, 20, 405};
+    private int npoints = 4;
+    private int xpoints2[] = {105,150, 180};
+    private int ypoints2[] = {105,20,10};
+    private int npoints2 = 3;
 	private int roadX = 0;
 	private int roadY = 540;
-	private int c = 0; 
 	
 	Color Silver = new Color (192,192,192);
 	Color Road = new Color (105,105,105);
@@ -117,9 +122,12 @@ public class MyAnimation{
 	  		//g.setColor(Color.black);
 	  		//g.drawOval(0, 0, 200, 30);
 	  	//Car
-	  		
 	  		image = i.getImage();	  		
 	  		g.drawImage(image, carX, carY, null);
+	  	//Island
+	  		g.setColor(Color.red);
+	  		g.drawPolygon(xpoints, ypoints, npoints);
+	  		g.drawPolygon(xpoints2, ypoints2, npoints2);
 		}
 	}
 	
