@@ -17,14 +17,22 @@ public class MyAnimation{
 	private int sunY = 190; // Starting Y coordinate
 	private int sun2X = 300; // Starting X coordinate
 	private int sun2Y = 350; // Starting Y coordinate
+	private int cloudX = 20; // Starting X coordinate
+	private int cloudY = 30; // Starting Y coordinate
+	private int cloud2X = 70; // Starting X coordinate
+	private int cloud2Y = 30; // Starting Y coordinate
+	private int cloud3X = 50; // Starting X coordinate
+	private int cloud3Y = 10; // Starting Y coordinate
+	private int cloud4X = 110; // Starting X coordinate
+	private int cloud5X = 30; // Starting X coordinate
+	private int cloud5Y = 40; // Starting Y coordinate
+	private int cloud6X = 70; // Starting Y coordinate
+	private int cloud7X = 120; // Starting Y coordinate
+	private int cloud8X = 100; // Starting Y coordinate
+	private int cloud9X = 160; // Starting Y coordinate
+	private int cloud10X = 80; // Starting Y coordinate
 	private int carX = 0 - i.getIconWidth(); // Starting Car X
 	private int carY = 380;	// Starting Car Y
-	private int xpoints[] = {400, 485, 645, 500};
-    private int ypoints[] = {400, 20, 20, 405};
-    private int npoints = 4;
-    private int xpoints2[] = {105,150, 180};
-    private int ypoints2[] = {105,20,10};
-    private int npoints2 = 3;
 	private int roadX = 0;
 	private int roadY = 540;
 	
@@ -33,6 +41,7 @@ public class MyAnimation{
 	Color Ocean = new Color(29,162,216);
 	Color Sun = new Color(253, 184, 19);
 	Color Sky = new Color(255,140,0);
+	Color Clouds = new Color(240,245,216);
 	Image image;
 	
 	boolean up = false;
@@ -124,10 +133,30 @@ public class MyAnimation{
 	  	//Car
 	  		image = i.getImage();	  		
 	  		g.drawImage(image, carX, carY, null);
-	  	//Island
-	  		g.setColor(Color.red);
-	  		g.drawPolygon(xpoints, ypoints, npoints);
-	  		g.drawPolygon(xpoints2, ypoints2, npoints2);
+	  	//Clouds
+	  		g.setColor(Clouds);
+	  		g.fillOval(cloudX,cloudY,200,50);
+	  		g.drawOval(cloudX,cloudY,200,50);
+	  		g.fillOval(cloud2X,cloud2Y,200,70);
+	  		g.drawOval(cloud2X,cloud2Y,200,70);
+	  		g.fillOval(cloud3X,cloud3Y,200,70);
+	  		g.drawOval(cloud3X,cloud3Y,200,70);
+	  		g.fillOval(cloud4X,cloud2Y,200,50);
+	  		g.drawOval(cloud4X,cloud2Y,200,50);
+	  		g.fillOval(cloud5X, cloud5Y, 150, 50);
+	  		g.drawOval(cloud5X, cloud5Y, 150, 50);
+	  		//
+	  		g.setColor(Clouds);
+	  		g.fillOval(cloud6X,cloudY+100,200,50);
+	  		g.drawOval(cloud6X,cloudY+100,200,50);
+	  		g.fillOval(cloud7X,cloud2Y+100,200,70);
+	  		g.drawOval(cloud7X,cloud2Y+100,200,70);
+	  		g.fillOval(cloud8X,cloud3Y+100,200,70);
+	  		g.drawOval(cloud8X,cloud3Y+100,200,70);
+	  		g.fillOval(cloud9X,cloud2Y+100,200,50);
+	  		g.drawOval(cloud9X,cloud2Y+100,200,50);
+	  		g.fillOval(cloud10X, cloud5Y+100, 150, 50);
+	  		g.drawOval(cloud10X, cloud5Y+100, 150, 50);
 		}
 	}
 	
@@ -138,6 +167,22 @@ public class MyAnimation{
 			if (counter % 100 == 0) {
 				sunX++;
 				sun2X++;
+			}
+			if (counter % 40 == 0) {
+				cloudX++;
+				cloud2X++;
+				cloud3X++;
+				cloud4X++;
+				cloud5X++;
+	
+			}
+			if (counter % 80 == 0) {
+				cloud6X++;
+				cloud7X++;
+				cloud8X++;
+				cloud9X++;
+				cloud10X++;
+	
 			}
 			if (counter % 5 == 0) {
 				carX++;
